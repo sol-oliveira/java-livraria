@@ -1,0 +1,33 @@
+<ui:composition template="WEB-INF/templates/template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:jsp="http://java.sun.com/JSP/Page" 
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets" 
+    xmlns:h="http://java.sun.com/jsf/html" >
+    
+    <jsp:directive.page language="java"
+        contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" />
+    <jsp:text>
+        <![CDATA[ <?xml version="1.0" encoding="ISO-8859-1" ?> ]]>
+    </jsp:text>
+    <jsp:text>
+        <![CDATA[ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> ]]>
+    </jsp:text>
+
+	<ui:define name="corpo-da-pagina">
+ 		<h:form>
+ 			<h:outputLabel value="Autenticação" style="font-weight:bold"/> <Br /><Br />
+ 			<h:panelGrid columns="2">
+ 				<h:outputLabel value="Usuário:" for="campo_login"/>
+ 				<h:inputText value="#{autenticarBean.login}" id="campo_login"/>
+ 	
+ 				<h:outputLabel value="Senha:" for="campo_senha"/>
+ 				<h:inputSecret value="#{autenticarBean.senha}" id="campo_senha"/>
+ 			</h:panelGrid><Br /><Br />
+ 			<h:messages globalOnly="true"/>
+ 			<h:commandButton value="Entrar" action="#{autenticarBean.autenticar}"/>
+ 		</h:form>
+	</ui:define>
+	
+</ui:composition>

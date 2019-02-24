@@ -1,0 +1,45 @@
+<ui:composition template="WEB-INF/templates/template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:jsp="http://java.sun.com/JSP/Page" 
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets" 
+    xmlns:h="http://java.sun.com/jsf/html" >
+    
+    <jsp:directive.page language="java"
+        contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" />
+    <jsp:text>
+        <![CDATA[ <?xml version="1.0" encoding="ISO-8859-1" ?> ]]>
+    </jsp:text>
+    <jsp:text>
+        <![CDATA[ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> ]]>
+    </jsp:text>
+
+	<ui:define name="corpo-da-pagina">
+ 		<h:form>
+ 			<h:panelGrid columns="2">
+				<h:panelGroup id="menu">
+					<ui:include src="/menu.xhtml"/>
+				</h:panelGroup>
+				<h:panelGroup id="conteudo">
+ 					<h:outputLabel value="Cadastro de Livros" style="font-weight:bold"/><Br /><Br />
+ 					<h:panelGrid columns="2">
+ 						<h:outputLabel value="Titulo: "/>
+ 						<h:inputText value="#{livroBean.titulo}" />
+ 						<h:outputLabel value="Preço: "/>
+ 						<h:inputText value="#{livroBean.preco}" />
+ 						<h:outputLabel value="Editoras: "/>
+ 						<h:selectOneMenu value="#{livroBean.idEditora}">
+ 							<f:selectItems
+ 								value="#{livroBean.editoras}"
+ 								var="editora"
+ 								itemValue="#{editora.id}"
+ 								itemLabel="#{editora.nome}" />
+ 							</h:selectOneMenu>
+ 						</h:panelGrid><Br /><Br />
+ 						<h:commandButton value ="Salvar" action="#{livroBean.cadastrarLivro}"/>
+ 						<h:button value="Cancela" outcome="Principal"  />
+ 				</h:panelGroup>
+			</h:panelGrid>
+ 		</h:form>
+	</ui:define>
+</ui:composition>
